@@ -13,8 +13,10 @@
         android:theme="@style/Theme.EE4354_G9_Dr_Doo"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".MainTabActivity"
+            android:exported="true"
+            android:label="@string/title_activity_main_tab"
+            android:theme="@style/Theme.EE4354_G9_Dr_Doo.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

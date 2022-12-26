@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">EE4354_G9_Dr_Doo</string>
+    <string name="app_name">Dr Doo</string>
+    <string name="title_activity_main_tab">MainTabActivity</string>
+    <string name="tab_text_1">Care</string>
+    <string name="tab_text_2">Find</string>
+    <string name="tab_text_3">Vet</string>
+    <string name="tab_text_4">Shop</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
