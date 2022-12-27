@@ -7,6 +7,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
@@ -42,8 +44,6 @@ public class MainTabActivity extends AppCompatActivity {
         ViewPager2 viewPager2 = findViewById(R.id.view_pager);
         //</ get elements >
 
-
-
         ViewPagerAdapter adapter = new ViewPagerAdapter(this);
         viewPager2.setAdapter(adapter);
 
@@ -69,7 +69,6 @@ public class MainTabActivity extends AppCompatActivity {
                     }
                 }).attach();
 
-
-
     }
+
 }
