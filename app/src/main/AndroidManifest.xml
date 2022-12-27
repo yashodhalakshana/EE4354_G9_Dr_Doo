@@ -13,6 +13,20 @@
         android:theme="@style/Theme.EE4354_G9_Dr_Doo"
         tools:targetApi="31">
         <activity
+            android:name=".Activity_Inside_Register"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Activity_Inside_View"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".MainTabActivity"
             android:exported="true"
             android:label="@string/title_activity_main_tab"
