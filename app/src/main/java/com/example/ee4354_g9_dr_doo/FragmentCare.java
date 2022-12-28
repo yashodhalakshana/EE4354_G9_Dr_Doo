@@ -36,8 +36,9 @@ public class FragmentCare extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-
+    private ArrayList<CardCare> careArrayList;
+    private RecyclerView recyclerview;
+    private String[] newsHeading;
     public FragmentCare() {
         // Required empty public constructor
     }
@@ -76,23 +77,36 @@ public class FragmentCare extends Fragment {
         // Inflate the layout for this fragment
 
         view = inflater.inflate(R.layout.fragment_care, container, false);
-
-
-       /* Button button = view.findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // handle the click event here
-                Toast.makeText(getContext(), "Button clicked!", Toast.LENGTH_SHORT).show();
-            }
-        });*/
-
         return view;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @NonNull Bundle SavedInstanceState){
+        super.onViewCreated(view,SavedInstanceState);
+        dataInitialize();
+        recyclerview = view.findViewById(R.id.recyclerViewCare);
+        recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerview.setHasFixedSize(true);
+        AdapterCare myAdapter = new AdapterCare(getContext(),careArrayList);
+        recyclerview.setAdapter(myAdapter);
+        myAdapter.notifyDataSetChanged();
+    }
 
-
-
+    private void dataInitialize() {
+        careArrayList = new ArrayList<>();
+        newsHeading = new String[]{
+                "Care",
+                "LCDFF",
+                "215",
+                "sds",
+                "5489",
+                "ysdiso"
+        };
+        for(int i=0;i<newsHeading.length;i++ ){
+            CardCare news = new CardCare(newsHeading[i],"Locate "+i,"Date " +i,"Contact "+i);
+            careArrayList.add(news);
+        }
+    }
 
 
 }

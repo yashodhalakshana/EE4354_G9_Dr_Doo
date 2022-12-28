@@ -22,9 +22,9 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
             case 1:
                 return  new FragmentFind();
             case 2:
-                return new FragmentVet();
+                return new FragmentShop();
             default:
-                return  new FragmentShop();
+                return  new FragmentVet();
         }
     }
     @Override

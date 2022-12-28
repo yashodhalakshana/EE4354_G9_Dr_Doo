@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
 
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="160dp"
     android:background="#5F4D93">
 
     <TextView
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="112dp"
         android:layout_marginTop="8dp"
-        android:text="<text>"
+        android:text="N/A"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -24,46 +24,36 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="112dp"
         android:layout_marginTop="8dp"
-        android:text="<text>"
+        android:text="N/A"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
-        android:id="@+id/txtLocationShop"
+        android:id="@+id/txtLocationCare"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="112dp"
         android:layout_marginTop="8dp"
-        android:text="<text>"
+        android:text="N/A"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/txtHeadShop" />
+        app:layout_constraintTop_toBottomOf="@+id/txtHeadCare" />
+
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.484"
         tools:ignore="MissingConstraints"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_margin="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="161dp" />
-
     <TextView
-        android:id="@+id/txtHeadShop"
+        android:id="@+id/txtHeadCare"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
@@ -84,7 +74,7 @@
         android:text="Location :"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/txtHeadShop" />
+        app:layout_constraintTop_toBottomOf="@+id/txtHeadCare" />
 
     <TextView
         android:id="@+id/textView3"
