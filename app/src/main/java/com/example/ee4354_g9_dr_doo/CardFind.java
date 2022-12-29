@@ -1,13 +1,15 @@
 package com.example.ee4354_g9_dr_doo;
 
+import com.google.android.gms.maps.model.LatLng;
+
 public class CardFind {
     String cHeading;
-    String cLocation;
+    LatLng cLocation;
     String cDate;
     String cContact;
     String cRewards;
 
-    public CardFind(String cHeading, String cLocation, String cDate, String cContact,String cRewards){
+    public CardFind(String cHeading, LatLng cLocation, String cDate, String cContact,String cRewards){
         this.cContact=cContact;
         this.cDate=cDate;
         this.cHeading=cHeading;
@@ -19,7 +21,7 @@ public class CardFind {
         return cHeading;
     }
 
-    public String getcLocation() {
+    public LatLng getcLocation() {
         return cLocation;
     }
 
@@ -39,7 +41,7 @@ public class CardFind {
         this.cHeading = cHeading;
     }
 
-    public void setcLocation(String cLocation) {
+    public void setcLocation(LatLng cLocation) {
         this.cLocation = cLocation;
     }
 

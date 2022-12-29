@@ -36,7 +36,7 @@ public class AdapterCare extends RecyclerView.Adapter<AdapterCare.MyViewHolder>{
         holder.cardHeading.setText(cardCare.cHeading);
         holder.cardContact.setText(cardCare.cContact);
         holder.cardDate.setText(cardCare.cDate);
-        holder.cardLocation.setText(cardCare.cLocation);
+        holder.cardLocation.setText(cardCare.cLocation.latitude + ", " + cardCare.cLocation.longitude);
     }
 
     @Override

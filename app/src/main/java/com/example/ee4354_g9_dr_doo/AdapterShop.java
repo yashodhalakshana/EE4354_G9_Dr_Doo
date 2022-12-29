@@ -36,7 +36,7 @@ public class AdapterShop extends RecyclerView.Adapter<AdapterShop.MyViewHolder>{
         holder.cardHeading.setText(cardShop.cHeading);
         holder.cardContact.setText(cardShop.cContact);
         holder.cardName.setText(cardShop.cName);
-        holder.cardLocation.setText(cardShop.cLocation);
+        holder.cardLocation.setText(cardShop.cLocation.latitude + ", " + cardShop.cLocation.longitude);
     }
 
     @Override

@@ -1,14 +1,16 @@
 package com.example.ee4354_g9_dr_doo;
 
+import com.google.android.gms.maps.model.LatLng;
+
 public class CardVet {
 
     String cHeading;
-    String cLocation;
+    LatLng cLocation;
     String cName;
     String cContact;
     String cRating;
 
-    public CardVet(String cHeading, String cLocation, String cName, String cContact,String cRating){
+    public CardVet(String cHeading, LatLng cLocation, String cName, String cContact,String cRating){
         this.cContact=cContact;
         this.cName=cName;
         this.cHeading=cHeading;
@@ -20,7 +22,7 @@ public class CardVet {
         return cHeading;
     }
 
-    public String getcLocation() {
+    public LatLng getcLocation() {
         return cLocation;
     }
 
@@ -40,7 +42,7 @@ public class CardVet {
         this.cHeading = cHeading;
     }
 
-    public void setcLocation(String cLocation) {
+    public void setcLocation(LatLng cLocation) {
         this.cLocation = cLocation;
     }
 

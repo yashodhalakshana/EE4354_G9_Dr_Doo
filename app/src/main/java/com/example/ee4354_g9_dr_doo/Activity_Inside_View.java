@@ -2,7 +2,10 @@ package com.example.ee4354_g9_dr_doo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class Activity_Inside_View extends AppCompatActivity {
@@ -19,10 +22,13 @@ public class Activity_Inside_View extends AppCompatActivity {
         TextView txtRating = findViewById(R.id.txtRatingsView);
         TextView txtLastSeen = findViewById(R.id.txtSeenView);
 
+        Button mapViewButton=findViewById(R.id.btnMapViewOn);
+
         int Kind=0;
         String Heading = "N/A";
         String Name  = "N/A";
-        String Location  = "N/A";
+        double lat =0;
+        double lan =0;
         String Contact  = "N/A";
         String Rewards  = "N/A";
         String Rating  = "N/A";
@@ -34,7 +40,8 @@ public class Activity_Inside_View extends AppCompatActivity {
             Kind    =   extras.getInt("Kind");
             Heading =   extras.getString("Heading");
             Name =   extras.getString("Name");
-            Location =   extras.getString("Location");
+            lat=   extras.getDouble("Lat");
+            lan=   extras.getDouble("Lan");
             Contact =   extras.getString("Contact");
             Rewards =   extras.getString("Rewards");
             Rating =   extras.getString("Rating");
@@ -45,7 +52,7 @@ public class Activity_Inside_View extends AppCompatActivity {
             txtHeading.setText("Rescue a " + Heading);
             txtName.setText(Heading);
             txtLastSeen.setText(Date);
-            txtLocation.setText(Location);
+            txtLocation.setText(lat +", " + lan);
             txContact.setText(Contact);
             txtRewards.setText("N/A");
             txtRating.setText("N/A");
@@ -54,7 +61,7 @@ public class Activity_Inside_View extends AppCompatActivity {
             txtHeading.setText("Find a " + Heading);
             txtName.setText(Heading);
             txtLastSeen.setText(Date);
-            txtLocation.setText(Location);
+            txtLocation.setText(lat +", " + lan);
             txContact.setText(Contact);
             txtRewards.setText("N/A");
             txtRating.setText(Rewards);
@@ -62,7 +69,7 @@ public class Activity_Inside_View extends AppCompatActivity {
             txtHeading.setText("Shop of - "+ Heading);
             txtName.setText(Name);
             txtLastSeen.setText("N/A");
-            txtLocation.setText(Location);
+            txtLocation.setText(lat +", " + lan);
             txContact.setText(Contact);
             txtRewards.setText("N/A");
             txtRating.setText("N/A");
@@ -70,12 +77,23 @@ public class Activity_Inside_View extends AppCompatActivity {
             txtHeading.setText("Doctor for pet - "+Heading);
             txtName.setText(Name);
             txtLastSeen.setText("N/A");
-            txtLocation.setText(Location);
+            txtLocation.setText(lat +", " + lan);
             txContact.setText(Contact);
             txtRewards.setText("N/A");
             txtRating.setText(Rating);
         }
 
+        double finalLat = lat;
+        double finalLan = lan;
+        mapViewButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ActivityMapView.class);
+                intent.putExtra("Lat", finalLat);
+                intent.putExtra("Lan", finalLan);
+                startActivity(intent);
+            }
+        });
 
 
     }

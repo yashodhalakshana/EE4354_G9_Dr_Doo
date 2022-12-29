@@ -35,7 +35,7 @@ public class AdapterFind extends RecyclerView.Adapter<AdapterFind.MyViewHolder>{
         holder.cardHeading.setText(cardFind.cHeading);
         holder.cardContact.setText(cardFind.cContact);
         holder.cardDate.setText(cardFind.cDate);
-        holder.cardLocation.setText(cardFind.cLocation);
+        holder.cardLocation.setText(cardFind.cLocation.latitude + ", " + cardFind.cLocation.longitude);
         holder.cardReward.setText(cardFind.cRewards);
     }
 

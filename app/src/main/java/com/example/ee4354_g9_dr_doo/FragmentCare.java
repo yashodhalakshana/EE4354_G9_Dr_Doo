@@ -22,6 +22,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.ArrayList;
 
 
@@ -100,9 +102,11 @@ public class FragmentCare extends Fragment {
             @Override
             public void onClick(View v, int position) {
                 Intent intent =new Intent(getContext(),Activity_Inside_View.class);
+                LatLng latLng = careArrayList.get(position).getcLocation();
                 intent.putExtra("Kind",1);  // just to identify the Care/Find/Vet/Shop
                 intent.putExtra("Heading",careArrayList.get(position).getcHeading());
-                intent.putExtra("Location",careArrayList.get(position).getcLocation());
+                intent.putExtra("Lat",latLng.latitude);
+                intent.putExtra("Lan",latLng.longitude);
                 intent.putExtra("Date",careArrayList.get(position).getcDate());
                 intent.putExtra("Contact",careArrayList.get(position).getcContact());
                 // need a code for image
@@ -123,7 +127,7 @@ public class FragmentCare extends Fragment {
                 "ysdiso"
         };
         for(int i=0;i<newsHeading.length;i++ ){
-            CardCare news = new CardCare(newsHeading[i],"Locate "+i,"Date " +i,"Contact "+i);
+            CardCare news = new CardCare(newsHeading[i],new LatLng(6.717989401, 79.93309889),"Date " +i,"Contact "+i);
             careArrayList.add(news);
         }
     }

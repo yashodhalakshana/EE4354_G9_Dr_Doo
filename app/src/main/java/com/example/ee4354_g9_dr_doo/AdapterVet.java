@@ -36,7 +36,7 @@ public class AdapterVet extends RecyclerView.Adapter<AdapterVet.MyViewHolder>{
         holder.cardHeading.setText(cardVet.cHeading);
         holder.cardContact.setText(cardVet.cContact);
         holder.cardName.setText(cardVet.cName);
-        holder.cardLocation.setText(cardVet.cLocation);
+        holder.cardLocation.setText(cardVet.cLocation.latitude + ", " + cardVet.cLocation.longitude);
         holder.cardRating.setText(cardVet.cRating);
     }
 

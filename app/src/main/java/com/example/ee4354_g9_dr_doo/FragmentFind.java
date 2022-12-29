@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.ArrayList;
 
 /**
@@ -90,9 +92,11 @@ public class FragmentFind extends Fragment {
             @Override
             public void onClick(View v, int position) {
                 Intent intent =new Intent(getContext(),Activity_Inside_View.class);
+                LatLng latLng = FindArrayList.get(position).getcLocation();
                 intent.putExtra("Kind",2);  // just to identify the Care/Find/Vet/Shop
                 intent.putExtra("Heading",FindArrayList.get(position).getcHeading());
-                intent.putExtra("Location",FindArrayList.get(position).getcLocation());
+                intent.putExtra("Lat",latLng.latitude);
+                intent.putExtra("Lan",latLng.longitude);
                 intent.putExtra("Date",FindArrayList.get(position).getcDate());
                 intent.putExtra("Contact",FindArrayList.get(position).getcContact());
                 intent.putExtra("Rewards",FindArrayList.get(position).getcRewards());
@@ -114,7 +118,7 @@ public class FragmentFind extends Fragment {
                 "ysdiso"
         };
         for(int i=0;i<newsHeading2.length;i++ ){
-            CardFind news = new CardFind(newsHeading2[i],"Locate "+i,"Date " +i,"Contact "+i,"Reward "+i);
+            CardFind news = new CardFind(newsHeading2[i],new LatLng(6.717989401, 79.93309889),"Date " +i,"Contact "+i,"Reward "+i);
             FindArrayList.add(news);
         }
     }

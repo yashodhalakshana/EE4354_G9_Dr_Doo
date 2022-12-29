@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.ArrayList;
 
 /**
@@ -88,9 +90,11 @@ public class FragmentVet extends Fragment {
             @Override
             public void onClick(View v, int position) {
                 Intent intent =new Intent(getContext(),Activity_Inside_View.class);
+                LatLng latLng = vetArrayList.get(position).getcLocation();
                 intent.putExtra("Kind",4);  // just to identify the Care/Find/Vet/Shop
                 intent.putExtra("Heading",vetArrayList.get(position).getcHeading());
-                intent.putExtra("Location",vetArrayList.get(position).getcLocation());
+                intent.putExtra("Lat",latLng.latitude);
+                intent.putExtra("Lan",latLng.longitude);
                 intent.putExtra("Name",vetArrayList.get(position).getcName());
                 intent.putExtra("Contact",vetArrayList.get(position).getcContact());
                 intent.putExtra("Rating",vetArrayList.get(position).getcRating());
@@ -111,7 +115,7 @@ public class FragmentVet extends Fragment {
                 "ysdiso"
         };
         for(int i=0;i<newsHeading.length;i++ ){
-            CardVet news = new CardVet(newsHeading[i],"Locate "+i,"Date " +i,"Contact "+i,"Rating "+i);
+            CardVet news = new CardVet(newsHeading[i],new LatLng(6.717989401, 79.93309889),"Date " +i,"Contact "+i,"Rating "+i);
             vetArrayList.add(news);
         }
     }
