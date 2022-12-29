@@ -15,9 +15,12 @@ public class AdapterShop extends RecyclerView.Adapter<AdapterShop.MyViewHolder>{
 
     Context context;
     ArrayList<CardShop> cardArrayList;
-    public AdapterShop(Context context, ArrayList<CardShop> newArrayList) {
+    private  static AdapterShop.RecyclerViewClickListener listener;
+
+    public AdapterShop(Context context, ArrayList<CardShop> newArrayList, AdapterShop.RecyclerViewClickListener listener) {
         this.context=context;
         this.cardArrayList=newArrayList;
+        this.listener=listener;
     }
 
     @NonNull
@@ -40,8 +43,10 @@ public class AdapterShop extends RecyclerView.Adapter<AdapterShop.MyViewHolder>{
     public int getItemCount() {
         return cardArrayList.size();
     }
-
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    public interface RecyclerViewClickListener{
+        void onClick(View v, int position);
+    }
+    public static class MyViewHolder extends RecyclerView.ViewHolder  implements View.OnClickListener{
         TextView cardHeading;
         TextView cardLocation;
         TextView cardContact;
@@ -52,7 +57,12 @@ public class AdapterShop extends RecyclerView.Adapter<AdapterShop.MyViewHolder>{
             cardLocation = itemView.findViewById(R.id.txtLocationShop);
             cardContact = itemView.findViewById(R.id.txtContactShop);
             cardName = itemView.findViewById(R.id.txtNameShop);
+            itemView.setOnClickListener(this);
+        }
 
+        @Override
+        public void onClick(View view) {
+            listener.onClick(view,getAbsoluteAdapterPosition());
         }
     }
 }

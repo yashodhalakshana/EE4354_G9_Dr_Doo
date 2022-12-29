@@ -1,5 +1,6 @@
 package com.example.ee4354_g9_dr_doo;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -31,7 +32,7 @@ public class FragmentShop extends Fragment {
     private ArrayList<CardShop> shopArrayList;
     private RecyclerView recyclerview;
     private String[] newsHeading;
-
+    private AdapterShop.RecyclerViewClickListener listener;
     public FragmentShop() {
         // Required empty public constructor
     }
@@ -74,12 +75,29 @@ public class FragmentShop extends Fragment {
     public void onViewCreated(@NonNull View view, @NonNull Bundle SavedInstanceState){
         super.onViewCreated(view,SavedInstanceState);
         dataInitialize();
+        setOnClickListener();
         recyclerview = view.findViewById(R.id.recyclerViewShop);
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerview.setHasFixedSize(true);
-        AdapterShop myAdapter = new AdapterShop(getContext(),shopArrayList);
+        AdapterShop myAdapter = new AdapterShop(getContext(),shopArrayList,listener);
         recyclerview.setAdapter(myAdapter);
         myAdapter.notifyDataSetChanged();
+    }
+    private void setOnClickListener() {
+        listener=new AdapterShop.RecyclerViewClickListener() {
+            @Override
+            public void onClick(View v, int position) {
+                Intent intent =new Intent(getContext(),Activity_Inside_View.class);
+                intent.putExtra("Kind",3);  // just to identify the Care/Find/Vet/Shop
+                intent.putExtra("Heading",shopArrayList.get(position).getcHeading());
+                intent.putExtra("Location",shopArrayList.get(position).getcLocation());
+                intent.putExtra("Name",shopArrayList.get(position).getcName());
+                intent.putExtra("Contact",shopArrayList.get(position).getcContact());
+                // need a code for image
+
+                startActivity(intent);
+            }
+        };
     }
 
     private void dataInitialize() {

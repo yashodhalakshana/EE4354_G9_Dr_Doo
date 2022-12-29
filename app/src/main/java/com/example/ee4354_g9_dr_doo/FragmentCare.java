@@ -1,6 +1,7 @@
 package com.example.ee4354_g9_dr_doo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -39,6 +40,7 @@ public class FragmentCare extends Fragment {
     private ArrayList<CardCare> careArrayList;
     private RecyclerView recyclerview;
     private String[] newsHeading;
+    private AdapterCare.RecyclerViewClickListener listener;
     public FragmentCare() {
         // Required empty public constructor
     }
@@ -83,13 +85,31 @@ public class FragmentCare extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @NonNull Bundle SavedInstanceState){
         super.onViewCreated(view,SavedInstanceState);
+        setOnClickListener();
         dataInitialize();
         recyclerview = view.findViewById(R.id.recyclerViewCare);
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerview.setHasFixedSize(true);
-        AdapterCare myAdapter = new AdapterCare(getContext(),careArrayList);
+        AdapterCare myAdapter = new AdapterCare(getContext(),careArrayList,listener);
         recyclerview.setAdapter(myAdapter);
         myAdapter.notifyDataSetChanged();
+    }
+
+    private void setOnClickListener() {
+        listener=new AdapterCare.RecyclerViewClickListener() {
+            @Override
+            public void onClick(View v, int position) {
+                Intent intent =new Intent(getContext(),Activity_Inside_View.class);
+                intent.putExtra("Kind",1);  // just to identify the Care/Find/Vet/Shop
+                intent.putExtra("Heading",careArrayList.get(position).getcHeading());
+                intent.putExtra("Location",careArrayList.get(position).getcLocation());
+                intent.putExtra("Date",careArrayList.get(position).getcDate());
+                intent.putExtra("Contact",careArrayList.get(position).getcContact());
+                // need a code for image
+
+                startActivity(intent);
+            }
+        };
     }
 
     private void dataInitialize() {

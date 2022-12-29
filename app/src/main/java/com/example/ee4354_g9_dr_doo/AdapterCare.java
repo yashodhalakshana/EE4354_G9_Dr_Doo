@@ -14,9 +14,13 @@ import java.util.ArrayList;
 public class AdapterCare extends RecyclerView.Adapter<AdapterCare.MyViewHolder>{
     Context context;
     ArrayList<CardCare> cardArrayList;
-    public AdapterCare(Context context, ArrayList<CardCare> newArrayList) {
+
+    private  static RecyclerViewClickListener listener;
+
+    public AdapterCare(Context context, ArrayList<CardCare> newArrayList, RecyclerViewClickListener listener) {
         this.context=context;
         this.cardArrayList=newArrayList;
+        this.listener=listener;
     }
 
     @NonNull
@@ -40,7 +44,11 @@ public class AdapterCare extends RecyclerView.Adapter<AdapterCare.MyViewHolder>{
         return cardArrayList.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    public interface RecyclerViewClickListener{
+        void onClick(View v, int position);
+    }
+
+    public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView cardHeading;
         TextView cardLocation;
         TextView cardContact;
@@ -52,6 +60,14 @@ public class AdapterCare extends RecyclerView.Adapter<AdapterCare.MyViewHolder>{
             cardContact = itemView.findViewById(R.id.txtContactCare);
             cardDate = itemView.findViewById(R.id.txtDateCare);
 
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            listener.onClick(view,getAbsoluteAdapterPosition());
         }
     }
+
+
 }

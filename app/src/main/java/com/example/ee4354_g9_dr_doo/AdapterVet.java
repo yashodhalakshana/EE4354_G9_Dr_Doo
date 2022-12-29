@@ -16,9 +16,11 @@ public class AdapterVet extends RecyclerView.Adapter<AdapterVet.MyViewHolder>{
 
     Context context;
     ArrayList<CardVet> cardArrayList;
-    public AdapterVet(Context context, ArrayList<CardVet> newArrayList) {
+    private  static AdapterVet.RecyclerViewClickListener listener;
+    public AdapterVet(Context context, ArrayList<CardVet> newArrayList, AdapterVet.RecyclerViewClickListener listener) {
         this.context=context;
         this.cardArrayList=newArrayList;
+        this.listener=listener;
     }
 
     @NonNull
@@ -43,7 +45,11 @@ public class AdapterVet extends RecyclerView.Adapter<AdapterVet.MyViewHolder>{
         return cardArrayList.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    public interface RecyclerViewClickListener{
+        void onClick(View v, int position);
+    }
+
+    public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView cardHeading;
         TextView cardLocation;
         TextView cardContact;
@@ -57,6 +63,13 @@ public class AdapterVet extends RecyclerView.Adapter<AdapterVet.MyViewHolder>{
             cardName = itemView.findViewById(R.id.txtNameVet);
             cardRating=itemView.findViewById(R.id.txtRatings);
 
+            itemView.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View view) {
+            listener.onClick(view,getAbsoluteAdapterPosition());
         }
     }
 }

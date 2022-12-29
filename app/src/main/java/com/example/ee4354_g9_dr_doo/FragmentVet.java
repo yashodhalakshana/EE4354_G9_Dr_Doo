@@ -1,5 +1,6 @@
 package com.example.ee4354_g9_dr_doo;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -31,7 +32,7 @@ public class FragmentVet extends Fragment {
     private ArrayList<CardVet> vetArrayList;
     private RecyclerView recyclerview;
     private String[] newsHeading;
-
+    private AdapterVet.RecyclerViewClickListener listener;
     public FragmentVet() {
         // Required empty public constructor
     }
@@ -73,15 +74,32 @@ public class FragmentVet extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @NonNull Bundle SavedInstanceState){
         super.onViewCreated(view,SavedInstanceState);
+        setOnClickListener();
         dataInitialize();
         recyclerview = view.findViewById(R.id.recyclerViewVet);
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerview.setHasFixedSize(true);
-        AdapterVet myAdapter = new AdapterVet(getContext(),vetArrayList);
+        AdapterVet myAdapter = new AdapterVet(getContext(),vetArrayList,listener);
         recyclerview.setAdapter(myAdapter);
         myAdapter.notifyDataSetChanged();
     }
+    private void setOnClickListener() {
+        listener=new AdapterVet.RecyclerViewClickListener() {
+            @Override
+            public void onClick(View v, int position) {
+                Intent intent =new Intent(getContext(),Activity_Inside_View.class);
+                intent.putExtra("Kind",4);  // just to identify the Care/Find/Vet/Shop
+                intent.putExtra("Heading",vetArrayList.get(position).getcHeading());
+                intent.putExtra("Location",vetArrayList.get(position).getcLocation());
+                intent.putExtra("Name",vetArrayList.get(position).getcName());
+                intent.putExtra("Contact",vetArrayList.get(position).getcContact());
+                intent.putExtra("Rating",vetArrayList.get(position).getcRating());
+                // need a code for image
 
+                startActivity(intent);
+            }
+        };
+    }
     private void dataInitialize() {
         vetArrayList = new ArrayList<>();
         newsHeading = new String[]{

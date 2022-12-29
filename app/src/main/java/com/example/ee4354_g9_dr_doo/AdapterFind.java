@@ -14,10 +14,12 @@ import java.util.ArrayList;
 public class AdapterFind extends RecyclerView.Adapter<AdapterFind.MyViewHolder>{
     Context context;
     ArrayList<CardFind> cardArrayList;
+    private  static AdapterFind.RecyclerViewClickListener listener;
 
-    public AdapterFind(Context context, ArrayList<CardFind> newArrayList) {
+    public AdapterFind(Context context, ArrayList<CardFind> newArrayList,  AdapterFind.RecyclerViewClickListener listener) {
         this.context=context;
         this.cardArrayList=newArrayList;
+        this.listener=listener;
     }
 
     @NonNull
@@ -42,7 +44,11 @@ public class AdapterFind extends RecyclerView.Adapter<AdapterFind.MyViewHolder>{
         return cardArrayList.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    public interface RecyclerViewClickListener{
+        void onClick(View v, int position);
+    }
+
+    public static class MyViewHolder extends RecyclerView.ViewHolder  implements View.OnClickListener{
         TextView cardHeading;
         TextView cardLocation;
         TextView cardContact;
@@ -55,6 +61,13 @@ public class AdapterFind extends RecyclerView.Adapter<AdapterFind.MyViewHolder>{
             cardContact = itemView.findViewById(R.id.txtContactFind);
             cardDate = itemView.findViewById(R.id.txtDateFind);
             cardReward = itemView.findViewById(R.id.txtRewardsFind);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            listener.onClick(view,getAbsoluteAdapterPosition());
         }
     }
 }

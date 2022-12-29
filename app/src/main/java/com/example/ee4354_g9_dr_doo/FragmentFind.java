@@ -1,5 +1,6 @@
 package com.example.ee4354_g9_dr_doo;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -31,7 +32,7 @@ public class FragmentFind extends Fragment {
     private ArrayList<CardFind> FindArrayList;
     private RecyclerView recyclerview;
     private String[] newsHeading2;
-
+    private AdapterFind.RecyclerViewClickListener listener;
     public FragmentFind() {
         // Required empty public constructor
     }
@@ -72,14 +73,34 @@ public class FragmentFind extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @NonNull Bundle SavedInstanceState){
+
         super.onViewCreated(view,SavedInstanceState);
+        setOnClickListener();
         dataInitialize();
         recyclerview = view.findViewById(R.id.recyclerViewFind);
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerview.setHasFixedSize(true);
-        AdapterFind myAdapter = new AdapterFind(getContext(),FindArrayList);
+        AdapterFind myAdapter = new AdapterFind(getContext(),FindArrayList,listener);
         recyclerview.setAdapter(myAdapter);
         myAdapter.notifyDataSetChanged();
+    }
+
+    private void setOnClickListener() {
+        listener=new AdapterFind.RecyclerViewClickListener() {
+            @Override
+            public void onClick(View v, int position) {
+                Intent intent =new Intent(getContext(),Activity_Inside_View.class);
+                intent.putExtra("Kind",2);  // just to identify the Care/Find/Vet/Shop
+                intent.putExtra("Heading",FindArrayList.get(position).getcHeading());
+                intent.putExtra("Location",FindArrayList.get(position).getcLocation());
+                intent.putExtra("Date",FindArrayList.get(position).getcDate());
+                intent.putExtra("Contact",FindArrayList.get(position).getcContact());
+                intent.putExtra("Rewards",FindArrayList.get(position).getcRewards());
+                // need a code for image
+
+                startActivity(intent);
+            }
+        };
     }
 
     private void dataInitialize() {
