@@ -3,9 +3,11 @@ package com.example.ee4354_g9_dr_doo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Activity_Inside_View extends AppCompatActivity {
@@ -21,7 +23,7 @@ public class Activity_Inside_View extends AppCompatActivity {
         TextView txtRewards = findViewById(R.id.txtRewardsView);
         TextView txtRating = findViewById(R.id.txtRatingsView);
         TextView txtLastSeen = findViewById(R.id.txtSeenView);
-
+        ImageView imageView = findViewById(R.id.imageViewOnView);
         Button mapViewButton=findViewById(R.id.btnMapViewOn);
 
         int Kind=0;
@@ -33,6 +35,7 @@ public class Activity_Inside_View extends AppCompatActivity {
         String Rewards  = "N/A";
         String Rating  = "N/A";
         String Date  = "N/A";
+        String Image = "";
 
         Bundle extras = getIntent().getExtras();
 
@@ -46,6 +49,7 @@ public class Activity_Inside_View extends AppCompatActivity {
             Rewards =   extras.getString("Rewards");
             Rating =   extras.getString("Rating");
             Date =   extras.getString("Date");
+            Image=   extras.getString("Image");
 
         }
         if(Kind==1){ // from Care
@@ -56,6 +60,7 @@ public class Activity_Inside_View extends AppCompatActivity {
             txContact.setText(Contact);
             txtRewards.setText("N/A");
             txtRating.setText("N/A");
+
 
         }else if(Kind==2){
             txtHeading.setText("Find a " + Heading);
@@ -83,6 +88,11 @@ public class Activity_Inside_View extends AppCompatActivity {
             txtRating.setText(Rating);
         }
 
+        try {
+           // imageView.setImageURI(Uri.parse(Image));
+        }catch (Exception e){
+
+        }
         double finalLat = lat;
         double finalLan = lan;
         mapViewButton.setOnClickListener(new View.OnClickListener() {

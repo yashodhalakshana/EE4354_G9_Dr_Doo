@@ -3,11 +3,14 @@ package com.example.ee4354_g9_dr_doo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ee4354_g9_dr_doo.databinding.ActivityMainTabBinding;
@@ -29,6 +32,7 @@ import java.util.List;
 
 public class Activity_Inside_Register extends AppCompatActivity {
     private int kindInt =0;
+    EditText editLocation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +45,7 @@ public class Activity_Inside_Register extends AppCompatActivity {
         EditText editDate = findViewById(R.id.editDate);
         EditText editRewards = findViewById(R.id.editRewards);
         EditText editRatings = findViewById(R.id.editRating);
-        EditText editLocation = findViewById(R.id.editLocation);
+        editLocation = findViewById(R.id.editLocation);
 
 
         Bundle extras = getIntent().getExtras();
@@ -66,6 +70,8 @@ public class Activity_Inside_Register extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // code to select image
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent,2);
             }
         });
 
@@ -73,19 +79,35 @@ public class Activity_Inside_Register extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
+            Intent intent = new Intent(getApplicationContext(),mapActivity.class);
+            startActivityForResult(intent,1);
             }
         });
 
+        btnReg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // ADD DATABASE CODE
+            }
+        });
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) { // from map
+            if (resultCode == RESULT_OK) {
+              double dLat = data.getDoubleExtra("Lat",0);
+              double dLan = data.getDoubleExtra("Lan",0);
+              editLocation.setText(dLat + ", "+dLan);
+            }
+        }else if(requestCode==2){ // from image browser
+            if (resultCode == RESULT_OK && data !=null) {
+                Uri selectImage = data.getData();
+                ImageView imageView = findViewById(R.id.imageReg);
+                imageView.setImageURI(selectImage);
 
-
-
-
-
-
-
-
-
+            }
+        }
     }
 
 

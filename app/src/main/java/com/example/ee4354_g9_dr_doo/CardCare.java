@@ -7,12 +7,14 @@ public class CardCare {
     LatLng cLocation;
     String cDate;
     String cContact;
+    String cImage;
 
-    public CardCare(String cHeading, LatLng cLocation, String cDate, String cContact){
+    public CardCare(String cHeading, LatLng cLocation, String cDate, String cContact, String cImage){
         this.cContact=cContact;
         this.cDate=cDate;
         this.cHeading=cHeading;
         this.cLocation=cLocation;
+        this.cImage=cImage;
     }
 
     public String getcHeading() {
@@ -33,6 +35,14 @@ public class CardCare {
 
     public void setcHeading(String cHeading) {
         this.cHeading = cHeading;
+    }
+
+    public String getcImage() {
+        return cImage;
+    }
+
+    public void setcImage(String cImage) {
+        this.cImage = cImage;
     }
 
     public void setcLocation(LatLng cLocation) {

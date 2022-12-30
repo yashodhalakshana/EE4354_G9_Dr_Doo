@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,6 +38,7 @@ public class AdapterFind extends RecyclerView.Adapter<AdapterFind.MyViewHolder>{
         holder.cardDate.setText(cardFind.cDate);
         holder.cardLocation.setText(cardFind.cLocation.latitude + ", " + cardFind.cLocation.longitude);
         holder.cardReward.setText(cardFind.cRewards);
+        //holder.cardImage.setImageURI(Uri.parse(cardFind.cImage));
     }
 
     @Override
@@ -54,6 +56,7 @@ public class AdapterFind extends RecyclerView.Adapter<AdapterFind.MyViewHolder>{
         TextView cardContact;
         TextView cardDate;
         TextView cardReward;
+        ImageView cardImage;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             cardHeading = itemView.findViewById(R.id.txtHeadFind);
@@ -61,7 +64,7 @@ public class AdapterFind extends RecyclerView.Adapter<AdapterFind.MyViewHolder>{
             cardContact = itemView.findViewById(R.id.txtContactFind);
             cardDate = itemView.findViewById(R.id.txtDateFind);
             cardReward = itemView.findViewById(R.id.txtRewardsFind);
-
+            cardImage=itemView.findViewById(R.id.imageViewCare);
             itemView.setOnClickListener(this);
         }
 

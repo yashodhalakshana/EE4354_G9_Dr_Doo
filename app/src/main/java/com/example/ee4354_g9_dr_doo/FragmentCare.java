@@ -109,7 +109,7 @@ public class FragmentCare extends Fragment {
                 intent.putExtra("Lan",latLng.longitude);
                 intent.putExtra("Date",careArrayList.get(position).getcDate());
                 intent.putExtra("Contact",careArrayList.get(position).getcContact());
-                // need a code for image
+                intent.putExtra("Image",careArrayList.get(position).getcImage());
 
                 startActivity(intent);
             }
@@ -127,7 +127,7 @@ public class FragmentCare extends Fragment {
                 "ysdiso"
         };
         for(int i=0;i<newsHeading.length;i++ ){
-            CardCare news = new CardCare(newsHeading[i],new LatLng(6.717989401, 79.93309889),"Date " +i,"Contact "+i);
+            CardCare news = new CardCare(newsHeading[i],new LatLng(6.717989401, 79.93309889),"Date " +i,"Contact "+i,"content://com.miui.gallery.open/raw/%2Fstorage%2Femulated%2F0%2FWhatsApp%2FMedia%2FWhatsApp%20Images%2FIMG-20221230-WA0004.jpg");
             careArrayList.add(news);
         }
     }

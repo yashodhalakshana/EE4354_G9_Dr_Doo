@@ -7,12 +7,21 @@ public class CardShop {
     LatLng cLocation;
     String cName;
     String cContact;
-
-    public CardShop(String cHeading, LatLng cLocation, String cName, String cContact){
+    String cImage;
+    public CardShop(String cHeading, LatLng cLocation, String cName, String cContact,String cImage){
         this.cContact=cContact;
         this.cName=cName;
         this.cHeading=cHeading;
         this.cLocation=cLocation;
+        this.cImage=cImage;
+    }
+
+    public String getcImage() {
+        return cImage;
+    }
+
+    public void setcImage(String cImage) {
+        this.cImage = cImage;
     }
 
     public String getcHeading() {

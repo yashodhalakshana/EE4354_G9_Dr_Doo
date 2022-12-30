@@ -97,7 +97,7 @@ public class FragmentShop extends Fragment {
                 intent.putExtra("Lan",latLng.longitude);
                 intent.putExtra("Name",shopArrayList.get(position).getcName());
                 intent.putExtra("Contact",shopArrayList.get(position).getcContact());
-                // need a code for image
+                intent.putExtra("Image",shopArrayList.get(position).getcImage());
 
                 startActivity(intent);
             }
@@ -115,7 +115,7 @@ public class FragmentShop extends Fragment {
                 "ysdiso"
         };
         for(int i=0;i<newsHeading.length;i++ ){
-            CardShop news = new CardShop(newsHeading[i],new LatLng(6.717989401, 79.93309889),"Date " +i,"Contact "+i);
+            CardShop news = new CardShop(newsHeading[i],new LatLng(6.717989401, 79.93309889),"Date " +i,"Contact "+i,"");
             shopArrayList.add(news);
         }
     }

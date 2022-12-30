@@ -100,7 +100,7 @@ public class FragmentFind extends Fragment {
                 intent.putExtra("Date",FindArrayList.get(position).getcDate());
                 intent.putExtra("Contact",FindArrayList.get(position).getcContact());
                 intent.putExtra("Rewards",FindArrayList.get(position).getcRewards());
-                // need a code for image
+                intent.putExtra("Image",FindArrayList.get(position).getcImage());
 
                 startActivity(intent);
             }
@@ -118,7 +118,7 @@ public class FragmentFind extends Fragment {
                 "ysdiso"
         };
         for(int i=0;i<newsHeading2.length;i++ ){
-            CardFind news = new CardFind(newsHeading2[i],new LatLng(6.717989401, 79.93309889),"Date " +i,"Contact "+i,"Reward "+i);
+            CardFind news = new CardFind(newsHeading2[i],new LatLng(6.717989401, 79.93309889),"Date " +i,"Contact "+i,"Reward "+i,"");
             FindArrayList.add(news);
         }
     }

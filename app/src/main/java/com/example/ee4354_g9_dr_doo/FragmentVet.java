@@ -98,7 +98,7 @@ public class FragmentVet extends Fragment {
                 intent.putExtra("Name",vetArrayList.get(position).getcName());
                 intent.putExtra("Contact",vetArrayList.get(position).getcContact());
                 intent.putExtra("Rating",vetArrayList.get(position).getcRating());
-                // need a code for image
+                intent.putExtra("Image",vetArrayList.get(position).getcImage());
 
                 startActivity(intent);
             }
@@ -115,7 +115,7 @@ public class FragmentVet extends Fragment {
                 "ysdiso"
         };
         for(int i=0;i<newsHeading.length;i++ ){
-            CardVet news = new CardVet(newsHeading[i],new LatLng(6.717989401, 79.93309889),"Date " +i,"Contact "+i,"Rating "+i);
+            CardVet news = new CardVet(newsHeading[i],new LatLng(6.717989401, 79.93309889),"Date " +i,"Contact "+i,"Rating "+i,"");
             vetArrayList.add(news);
         }
     }

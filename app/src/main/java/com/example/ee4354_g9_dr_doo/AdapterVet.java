@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -38,6 +39,7 @@ public class AdapterVet extends RecyclerView.Adapter<AdapterVet.MyViewHolder>{
         holder.cardName.setText(cardVet.cName);
         holder.cardLocation.setText(cardVet.cLocation.latitude + ", " + cardVet.cLocation.longitude);
         holder.cardRating.setText(cardVet.cRating);
+        //holder.cardImage.setImageURI(Uri.parse(cardVet.cImage));
     }
 
     @Override
@@ -55,6 +57,7 @@ public class AdapterVet extends RecyclerView.Adapter<AdapterVet.MyViewHolder>{
         TextView cardContact;
         TextView cardName;
         TextView cardRating;
+        ImageView cardImage;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             cardHeading = itemView.findViewById(R.id.txtHeadVet);
@@ -62,7 +65,7 @@ public class AdapterVet extends RecyclerView.Adapter<AdapterVet.MyViewHolder>{
             cardContact = itemView.findViewById(R.id.txtContactVet);
             cardName = itemView.findViewById(R.id.txtNameVet);
             cardRating=itemView.findViewById(R.id.txtRatings);
-
+            cardImage=itemView.findViewById(R.id.imageViewCare);
             itemView.setOnClickListener(this);
 
         }

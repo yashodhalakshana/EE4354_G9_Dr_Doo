@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageViewOnView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="108dp"
@@ -38,7 +38,7 @@
         android:layout_marginTop="48dp"
         android:text="Name : "
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewOnView" />
 
     <TextView
         android:id="@+id/txtNameView"
@@ -48,7 +48,7 @@
         android:layout_marginTop="48dp"
         android:text="N/A"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewOnView" />
 
     <TextView
         android:id="@+id/textView6"

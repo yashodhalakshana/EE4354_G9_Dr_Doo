@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,6 +38,7 @@ public class AdapterShop extends RecyclerView.Adapter<AdapterShop.MyViewHolder>{
         holder.cardContact.setText(cardShop.cContact);
         holder.cardName.setText(cardShop.cName);
         holder.cardLocation.setText(cardShop.cLocation.latitude + ", " + cardShop.cLocation.longitude);
+        //holder.cardImage.setImageURI(Uri.parse(cardShop.cImage));
     }
 
     @Override
@@ -51,12 +53,14 @@ public class AdapterShop extends RecyclerView.Adapter<AdapterShop.MyViewHolder>{
         TextView cardLocation;
         TextView cardContact;
         TextView cardName;
+        ImageView cardImage;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             cardHeading = itemView.findViewById(R.id.txtHeadShop);
             cardLocation = itemView.findViewById(R.id.txtLocationShop);
             cardContact = itemView.findViewById(R.id.txtContactShop);
             cardName = itemView.findViewById(R.id.txtNameShop);
+            cardImage=itemView.findViewById(R.id.imageViewCare);
             itemView.setOnClickListener(this);
         }
 

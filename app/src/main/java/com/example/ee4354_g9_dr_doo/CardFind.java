@@ -8,13 +8,22 @@ public class CardFind {
     String cDate;
     String cContact;
     String cRewards;
-
-    public CardFind(String cHeading, LatLng cLocation, String cDate, String cContact,String cRewards){
+    String cImage;
+    public CardFind(String cHeading, LatLng cLocation, String cDate, String cContact,String cRewards, String cImage){
         this.cContact=cContact;
         this.cDate=cDate;
         this.cHeading=cHeading;
         this.cLocation=cLocation;
         this.cRewards=cRewards;
+        this.cImage=cImage;
+    }
+
+    public String getcImage() {
+        return cImage;
+    }
+
+    public void setcImage(String cImage) {
+        this.cImage = cImage;
     }
 
     public String getcHeading() {

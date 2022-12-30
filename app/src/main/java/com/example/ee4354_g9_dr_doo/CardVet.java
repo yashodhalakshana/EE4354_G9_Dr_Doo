@@ -9,13 +9,22 @@ public class CardVet {
     String cName;
     String cContact;
     String cRating;
-
-    public CardVet(String cHeading, LatLng cLocation, String cName, String cContact,String cRating){
+    String cImage;
+    public CardVet(String cHeading, LatLng cLocation, String cName, String cContact,String cRating,String cImage){
         this.cContact=cContact;
         this.cName=cName;
         this.cHeading=cHeading;
         this.cLocation=cLocation;
         this.cRating=cRating;
+        this.cImage=cImage;
+    }
+
+    public String getcImage() {
+        return cImage;
+    }
+
+    public void setcImage(String cImage) {
+        this.cImage = cImage;
     }
 
     public String getcHeading() {

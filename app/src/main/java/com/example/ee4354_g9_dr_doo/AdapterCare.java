@@ -1,9 +1,11 @@
 package com.example.ee4354_g9_dr_doo;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,6 +39,7 @@ public class AdapterCare extends RecyclerView.Adapter<AdapterCare.MyViewHolder>{
         holder.cardContact.setText(cardCare.cContact);
         holder.cardDate.setText(cardCare.cDate);
         holder.cardLocation.setText(cardCare.cLocation.latitude + ", " + cardCare.cLocation.longitude);
+        //holder.cardImage.setImageURI(Uri.parse(cardCare.cImage));
     }
 
     @Override
@@ -53,13 +56,14 @@ public class AdapterCare extends RecyclerView.Adapter<AdapterCare.MyViewHolder>{
         TextView cardLocation;
         TextView cardContact;
         TextView cardDate;
+        ImageView cardImage;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             cardHeading = itemView.findViewById(R.id.txtHeadCare);
             cardLocation = itemView.findViewById(R.id.txtLocationCare);
             cardContact = itemView.findViewById(R.id.txtContactCare);
             cardDate = itemView.findViewById(R.id.txtDateCare);
-
+            cardImage=itemView.findViewById(R.id.imageViewCare);
             itemView.setOnClickListener(this);
         }
 
